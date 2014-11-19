@@ -1,9 +1,15 @@
-var express = require('express');
-var router = express.Router();
+var crawler = require('../crawler');
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
-});
+module.exports = function(app) {
+    app.get('/',getHomePage);
+    app.get('/beginCraw',beginCraw);
+};
 
-module.exports = router;
+function getHomePage(req,res) {
+    res.render('index', { title: 'Express' });
+}
+
+function beginCraw(req,res) {
+    crawler.craw();
+    res.render('index', { title: 'Express' });
+}

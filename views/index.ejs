@@ -3,9 +3,16 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect("127.0.0.1", {port: 3000});
+        socket.on('crawing', function (data) {
+            console.log(data);
+        });
+    </script>
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <a href="/beginCraw">开始</a>
   </body>
 </html>
